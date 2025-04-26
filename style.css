@@ -1,0 +1,146 @@
+/* Reset básico para remover margens e paddings padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo padrão do corpo da página */
+body,
+html {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(210, 210, 211);
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+/* Tema escuro para o corpo */
+body.dark-theme {
+    background-color: #333;
+    color: white;
+}
+
+/* Estilo principal do container */
+main {
+    padding: 10px 0 20px;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo do botão de alternar tema */
+#toggleTheme {
+    padding: 10px;
+    background-color: #333;
+    border: 0;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 10;
+    /* Garante que o botão fique acima da section */
+}
+
+/* Estilo do botão no tema escuro */
+body.dark-theme #toggleTheme {
+    background-color: #e7e7e7;
+}
+
+/* Estilo da seção principal */
+section {
+    background-color: rgb(237, 237, 241);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 10px;
+    border-radius: 10px;
+    position: relative;
+    min-height: 100%;
+    margin-top: 30px;
+}
+
+/* Estilo da seção no tema escuro */
+body.dark-theme section {
+    background-color: #0000002d;
+    border: 1px solid #838383;
+    color: white;
+}
+
+/* Estilo do título principal */
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #000;
+    padding: 20px 0;
+}
+
+/* Estilo do título no tema escuro */
+body.dark-theme h1 {
+    color: white;
+
+}
+
+/* Estilo do formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Estilo dos rótulos (labels) */
+label {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Estilo dos rótulos no tema escuro */
+body.dark-theme label {
+    color: white;
+}
+
+/* Estilo dos campos de entrada */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Estilo do botão de envio do formulário */
+.btn-form {
+    width: 100%;
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Estilo do botão de envio no tema escuro */
+body.dark-theme .btn-form {
+    background-color: #024081;
+}
+
+footer {
+    background-color: #000;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #fffdfd;
+}
