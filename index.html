@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<!-- Elemento raiz do documento HTML -->
 
 <head>
+    <!-- Cabeçalho do documento, contém metadados e links para recursos externos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ricardo Vieira">
@@ -12,23 +14,27 @@
 </head>
 
 <body>
+    <!-- Corpo do documento, contém o conteúdo visível da página -->
 
     <main>
+        <!-- Elemento principal da página -->
         <section>
+            <!-- Seção que contém o formulário de cadastro -->
             <button id="toggleTheme">🌙</button>
             <h1>Cadastro de Endereço</h1>
             <form id="cadastroForm">
+                <!-- Formulário de cadastro de endereço -->
                 <label for="cep">Cep:</label>
                 <input type="number" id="cep" name="cep" required>
 
                 <label for="Logradouro">Logradouro:</label>
-                <input type="number" id="Logradouro" name="Logradouro" required>
+                <input type="text" id="Logradouro" name="Logradouro" required>
 
                 <label for="Bairro">Bairro:</label>
                 <input type="text" id="Bairro" name="Bairro" required>
 
                 <label for="Cidade">Cidade:</label>
-                <input type="text" id="Cidade" name="Cidade" required>
+                <input type="text" id="cidade" name="Cidade" required>
 
                 <label for="Estado">Estado:</label>
                 <input type="text" id="Estado" name="Estado" required>
@@ -40,13 +46,16 @@
             </form>
         </section>
     </main>
+
     <footer>
+        <!-- Rodapé da página -->
         <p>Desenvolvido por <strong>Ricardo Vieira</strong> - <a href="https://ebaconline.com.br" target="_blank"
                 rel="noopener noreferrer">EBAC</a></p> <br>
         <p>&copy; 2025. Todos os direitos reservados.</p>
     </footer>
-    </footer>
+
     <script src="scripts.js"></script>
+    <!-- Inclusão do arquivo de script externo -->
 </body>
 
 </html>
