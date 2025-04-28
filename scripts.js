@@ -1,5 +1,6 @@
 const toggleButton = document.getElementById("toggleTheme");
 
+// Alternância de tema
 toggleButton.addEventListener("click", function () {
     document.body.classList.toggle("dark-theme");
 
@@ -9,10 +10,11 @@ toggleButton.addEventListener("click", function () {
     } else {
         toggleButton.textContent = "🌙"; // Tema escuro
     }
+
     // Salva a preferência do tema no armazenamento local
     localStorage.setItem("theme", document.body.classList.contains("dark-theme") ? "dark" : "light");
-
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     // Verifica a preferência do tema no armazenamento local
     const savedTheme = localStorage.getItem("theme");
@@ -23,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.remove("dark-theme");
         toggleButton.textContent = "🌙"; // Tema escuro
     }
+
     // Recupera os dados do formulário do localStorage
     const campos = ["cep", "Logradouro", "Bairro", "cidade", "Estado", "Número"];
     campos.forEach(campo => {
@@ -33,14 +36,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// ouvir o evento de quando o usúario sair do input
+// Salvar os dados do formulário no localStorage
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", (evento) => {
+        const elemento = evento.target;
+        localStorage.setItem(elemento.id, elemento.value); // Salva o valor no localStorage usando o ID do campo como chave
+    });
+});
+
+// Ouvir o evento de quando o usuário sair do input de CEP
 document.getElementById("cep").addEventListener("blur", (evento) => {
     const elemento = evento.target;
     const cepInformado = elemento.value;
 
     // Verifica se o CEP informado é válido
-    if (!(cepInformado.length === 8))
+    if (!(cepInformado.length === 8)) {
+        alert("CEP inválido. Certifique-se de que contém 8 dígitos.");
         return;
+    }
 
     // Faz a requisição para a API
     fetch(`https://viacep.com.br/ws/${cepInformado}/json/`)
@@ -51,7 +64,7 @@ document.getElementById("cep").addEventListener("blur", (evento) => {
                 document.getElementById('Logradouro').value = data.logradouro;
                 document.getElementById('Bairro').value = data.bairro;
                 document.getElementById('cidade').value = data.localidade;
-                document.getElementById('Estado').value = data.estado;
+                document.getElementById('Estado').value = data.uf;
 
                 // Salva os dados preenchidos automaticamente no localStorage
                 localStorage.setItem("Logradouro", data.logradouro);
@@ -59,16 +72,8 @@ document.getElementById("cep").addEventListener("blur", (evento) => {
                 localStorage.setItem("cidade", data.localidade);
                 localStorage.setItem("Estado", data.uf);
             } else {
-                alert("CEP NÂO ENCONTRADO")
+                alert("CEP não encontrado.");
             }
         })
         .catch(error => console.error("Erro ao buscar o CEP: ", error));
-
-    // Salvar os dados do formulário no localStorage
-    document.querySelectorAll("input").forEach(input => {
-        input.addEventListener("input", (evento) => {
-            const elemento = evento.target;
-            localStorage.setItem(elemento.id, elemento.value); // Salva o valor no localStorage usando o ID do campo como chave
-        });
-    });
 });
